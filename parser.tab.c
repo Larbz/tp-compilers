@@ -525,8 +525,8 @@ static const yytype_int8 yytranslate[] =
 static const yytype_int8 yyrline[] =
 {
        0,    45,    45,    47,    49,    50,    51,    52,    53,    60,
-      68,    71,    74,    77,    80,    82,    86,    87,    88,    89,
-      90,    93,    94,    95,    96,    97,    98
+      68,    72,    77,    82,    87,    91,    95,    96,    97,    98,
+      99,   102,   103,   104,   105,   106,   107
 };
 #endif
 
@@ -1181,111 +1181,120 @@ yyreduce:
   case 10: /* condition: INTEGER LT INTEGER  */
 #line 68 "parser.y"
                        {
+        (yyval.integer) = ((yyvsp[-2].integer) < (yyvsp[0].integer));
         printf("VALOR BOOL: %d\n", (yyval.integer));
     }
-#line 1187 "parser.tab.c"
+#line 1188 "parser.tab.c"
     break;
 
   case 11: /* condition: INTEGER GT INTEGER  */
-#line 71 "parser.y"
+#line 72 "parser.y"
                        {
+        (yyval.integer) = ((yyvsp[-2].integer) > (yyvsp[0].integer));
+
         printf("VALOR BOOL: %d\n", (yyval.integer));
     }
-#line 1195 "parser.tab.c"
+#line 1198 "parser.tab.c"
     break;
 
   case 12: /* condition: INTEGER LTE INTEGER  */
-#line 74 "parser.y"
+#line 77 "parser.y"
                         {
+        (yyval.integer) = ((yyvsp[-2].integer) <= (yyvsp[0].integer));
+
         printf("VALOR BOOL: %d\n", (yyval.integer));
     }
-#line 1203 "parser.tab.c"
+#line 1208 "parser.tab.c"
     break;
 
   case 13: /* condition: INTEGER GTE INTEGER  */
-#line 77 "parser.y"
+#line 82 "parser.y"
                         {
+        (yyval.integer) = ((yyvsp[-2].integer) >= (yyvsp[0].integer));
+
         printf("VALOR BOOL: %d\n", (yyval.integer));
     }
-#line 1211 "parser.tab.c"
+#line 1218 "parser.tab.c"
     break;
 
   case 14: /* condition: INTEGER EQUAL INTEGER  */
-#line 80 "parser.y"
+#line 87 "parser.y"
                           {
+        (yyval.integer) = ((yyvsp[-2].integer) == (yyvsp[0].integer));
+
         printf("VALOR BOOL: %d\n", (yyval.integer));
     }
-#line 1219 "parser.tab.c"
+#line 1228 "parser.tab.c"
     break;
 
   case 16: /* value: INTEGER  */
-#line 86 "parser.y"
+#line 95 "parser.y"
             { char buf[12]; sprintf(buf, "%d", (yyvsp[0].integer)); (yyval.stringval) = strdup(buf); }
-#line 1225 "parser.tab.c"
+#line 1234 "parser.tab.c"
     break;
 
   case 17: /* value: CHAR  */
-#line 87 "parser.y"
+#line 96 "parser.y"
            { char buf[2]; buf[0] = (yyvsp[0].charval); buf[1] = '\0'; (yyval.stringval) = strdup(buf); }
-#line 1231 "parser.tab.c"
+#line 1240 "parser.tab.c"
     break;
 
   case 18: /* value: STRING  */
-#line 88 "parser.y"
+#line 97 "parser.y"
              { (yyval.stringval) = (yyvsp[0].stringval); }
-#line 1237 "parser.tab.c"
+#line 1246 "parser.tab.c"
     break;
 
   case 19: /* value: DOUBLE  */
-#line 89 "parser.y"
+#line 98 "parser.y"
              { char buf[50]; sprintf(buf, "%.2lf", (yyvsp[0].doubleval)); (yyval.stringval) = strdup(buf); }
-#line 1243 "parser.tab.c"
+#line 1252 "parser.tab.c"
     break;
 
   case 20: /* value: BOOLEAN  */
-#line 90 "parser.y"
+#line 99 "parser.y"
               { (yyval.stringval) = ((yyvsp[0].boolean)); }
-#line 1249 "parser.tab.c"
+#line 1258 "parser.tab.c"
     break;
 
   case 21: /* exp: INTEGER  */
-#line 93 "parser.y"
+#line 102 "parser.y"
             {(yyval.integer) = (yyvsp[0].integer);}
-#line 1255 "parser.tab.c"
+#line 1264 "parser.tab.c"
     break;
 
   case 22: /* exp: exp '+' exp  */
-#line 94 "parser.y"
+#line 103 "parser.y"
                   { (yyval.integer) = (yyvsp[-2].integer) + (yyvsp[0].integer); }
-#line 1261 "parser.tab.c"
+#line 1270 "parser.tab.c"
     break;
 
   case 23: /* exp: exp '-' exp  */
-#line 95 "parser.y"
+#line 104 "parser.y"
                   { (yyval.integer) = (yyvsp[-2].integer) - (yyvsp[0].integer); }
-#line 1267 "parser.tab.c"
+#line 1276 "parser.tab.c"
     break;
 
   case 24: /* exp: exp '*' exp  */
-#line 96 "parser.y"
+#line 105 "parser.y"
                   { (yyval.integer) = (yyvsp[-2].integer) * (yyvsp[0].integer); }
-#line 1273 "parser.tab.c"
+#line 1282 "parser.tab.c"
     break;
 
   case 25: /* exp: exp '/' exp  */
-#line 97 "parser.y"
+#line 106 "parser.y"
                   { (yyval.integer) = (yyvsp[-2].integer) / (yyvsp[0].integer); }
-#line 1279 "parser.tab.c"
+#line 1288 "parser.tab.c"
     break;
 
   case 26: /* exp: exp '^' exp  */
-#line 98 "parser.y"
+#line 107 "parser.y"
                   { (yyval.integer)=  (yyvsp[-2].integer) * (yyvsp[0].integer); }
-#line 1285 "parser.tab.c"
+#line 1294 "parser.tab.c"
     break;
 
 
-#line 1289 "parser.tab.c"
+#line 1298 "parser.tab.c"
 
       default: break;
     }
@@ -1479,7 +1488,7 @@ yyreturn:
   return yyresult;
 }
 
-#line 103 "parser.y"
+#line 112 "parser.y"
 
 
 void return_function(char* line){

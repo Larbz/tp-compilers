@@ -6,11 +6,16 @@
 extern FILE *yyin;
 extern FILE *yyout;
 %}
-
+MAYOR         📏
+LLAVE_APER     🔌
+LLAVE_CERRA    ⛓ 
 %%
 
 [ \t\n]          /* Ignore whitespace */
 "true"|"false"   { yylval.boolean = strdup(yytext); return BOOLEAN; }
+{LLAVE_APER}           { return '{';  }
+{LLAVE_CERRA}          { return '}';  }
+{MAYOR}                { return GT;  }
 [0-9]+           { yylval.integer = atoi(yytext); return INTEGER; }
 [0-9]*\.[0-9]+   { yylval.doubleval = atof(yytext); return DOUBLE; }
 '.'              { yylval.charval = yytext[1]; return CHAR; }
@@ -18,7 +23,6 @@ extern FILE *yyout;
 print       { return PRINT; }
 if                     { return IF; }
 esmenor                { return LT; }
-esmayor               { return GT; }
 esmenoroigual                { return LTE; }
 esmayoroigual                { return GTE; }
 esigual                { return EQUAL; }

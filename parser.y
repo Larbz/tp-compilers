@@ -66,18 +66,27 @@ line:
 
 condition:
     INTEGER LT INTEGER {
+        $$ = ($1 < $3);
         printf("VALOR BOOL: %d\n", $$);
     }|
     INTEGER GT INTEGER {
+        $$ = ($1 > $3);
+
         printf("VALOR BOOL: %d\n", $$);
     }|
     INTEGER LTE INTEGER {
+        $$ = ($1 <= $3);
+
         printf("VALOR BOOL: %d\n", $$);
     }|
     INTEGER GTE INTEGER {
+        $$ = ($1 >= $3);
+
         printf("VALOR BOOL: %d\n", $$);
     }|
     INTEGER EQUAL INTEGER {
+        $$ = ($1 == $3);
+
         printf("VALOR BOOL: %d\n", $$);
     }|
     ;
