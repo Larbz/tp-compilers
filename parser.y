@@ -27,12 +27,14 @@ void yyerror(const char* s) {
 %token <stringval> STRING
 %token <doubleval> DOUBLE
 %token <boolean> BOOLEAN
-%token <stringval> TYPE
-%token <stringval> IDENTIFIER
 %token PRINT
 %token FOR
 %token IF
 %token LT
+%token LTE
+%token GT
+%token GTE
+%token EQUAL
 %type <stringval> value
 %type <stringval> line
 %type <integer> exp
@@ -44,7 +46,7 @@ input:
     /* empty */
     | input line
 line:
-    value { return $1; }
+    value { printf("%s\n", $1); }
     | PRINT '(' value ')' { printf("%s\n", $3); }
     | PRINT '(' exp ')' { printf("%d\n", $3); }
     | error { printf("Error\n"); }
@@ -60,14 +62,24 @@ line:
             return_function($10);
         }
     }
-    |TYPE ' ' IDENTIFIER '=' value ';'  { printf($2);}
-    
+
 
 condition:
     INTEGER LT INTEGER {
-        $$ = ($1 < $3);
         printf("VALOR BOOL: %d\n", $$);
-    }
+    }|
+    INTEGER GT INTEGER {
+        printf("VALOR BOOL: %d\n", $$);
+    }|
+    INTEGER LTE INTEGER {
+        printf("VALOR BOOL: %d\n", $$);
+    }|
+    INTEGER GTE INTEGER {
+        printf("VALOR BOOL: %d\n", $$);
+    }|
+    INTEGER EQUAL INTEGER {
+        printf("VALOR BOOL: %d\n", $$);
+    }|
     ;
 
 value:

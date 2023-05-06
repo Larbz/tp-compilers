@@ -18,10 +18,13 @@ extern FILE *yyout;
 print       { return PRINT; }
 if                     { return IF; }
 esmenor                { return LT; }
+esmayor               { return GT; }
+esmenoroigual                { return LTE; }
+esmayoroigual                { return GTE; }
+esigual                { return EQUAL; }
 for                    { return FOR; }
-int|char|string { return TYPE; }
 \"[^"]*\"        { yylval.stringval = strdup(yytext); return STRING; }
-\a-zA-Z+\   { return IDENTIFIER; }
+<<EOF>>     {return EOF;}
 %%
 
 int yywrap() {

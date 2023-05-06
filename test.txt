@@ -1,0 +1,8 @@
+if(1 esigual 1){1}
+if(1 esigual 2){1}
+if(3 esmenor 1){1}
+if(3 esmenor 4){1}
+if(5 esmenoroigual 5){1}
+if(5 esmenoroigual 6){1}
+if(1 esmayor 0){1}
+if(2 esmayoroigual 2){1}
