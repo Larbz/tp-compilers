@@ -12,14 +12,6 @@ void yyerror(const char* s) {
     fprintf(stderr, "Error: %s\n", s);
 }
 
-char* itoa(int value, char* result, int base) {
-    // implementación de itoa
-}
-
-char* ftoa(double value, char* result, int precision) {
-    // implementación de ftoa
-}
-
 %}
 
 %union {
