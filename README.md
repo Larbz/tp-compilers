@@ -1,6 +1,6 @@
 # tp-compilers
 
-##integrantes:
+## Integrantes:
 
 ### Arroyo Bonifaz, Luis Roberto
 ### Basauri Quispe, Roberto Carlos
